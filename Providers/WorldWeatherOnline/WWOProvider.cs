@@ -1,35 +1,44 @@
 using System;
+using System.IO;
+using System.Net;
 using System.Xml.XPath;
 
 namespace WeatherAPI.Providers.WorldWeatherOnline {
 	
-	internal class WWOProvider : AbstractWeatherProvider, IWeather {
+	internal class WWOProvider : WeatherProvider, IWeather {
 		
 		private const string WWO_API_FORMAT = "xml";
 		private const string WWO_API_URL = "http://free.worldweatheronline.com/feed/weather.ashx?q={0}&format={1}&num_of_days=1&key={2}";
 		private const string WWO_XPATH_HEADER = "//data/current_condition/{0}";
 		
 		private XPathDocument _xpath;
+		private string _wwo_api_key;
 		
-		public WWOProvider () {
-			
+		public WWOProvider () : base() {
+			if (IsAvailable()) {
+				_wwo_api_key = _dllConfig.AppSettings.Settings["WORLD_WEATER_ONLINE_API_KEY"].Value;
+			}
 		}
 		
 		public override bool IsAvailable() {
-			return false;
+			return _dllConfig.AppSettings.Settings["WORLD_WEATER_ONLINE_API_KEY"] != null;
 		}
 		
 		public override void Update() {
-			//string url = String.Format(WWO_API_URL, "98121", WWO_API_FORMAT, _wwo_api_key);
-			//HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+			string url = String.Format(WWO_API_URL, "98121", WWO_API_FORMAT, _wwo_api_key);
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 			
-			//HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-			//string xml = new StreamReader(response.GetResponseStream()).ReadToEnd();
+			HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+			string xml = new StreamReader(response.GetResponseStream()).ReadToEnd();
 			
-			//_xpath = new XPathDocument(new StringReader(xml));
+			_xpath = new XPathDocument(new StringReader(xml));
 		}
 		
-		public override double DegreesCelcius {
+		public override bool Supports(LocationSource source) { 
+			return true;
+		}
+		
+		public double DegreesCelcius {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "temp_C/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -38,7 +47,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 
-		public override double DegressFahrienhiet {
+		public double DegressFahrienhiet {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "temp_F/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -47,7 +56,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 
-		public override double WindSpeedMPH {
+		public double WindSpeedMPH {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "windspeedMiles/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -56,7 +65,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 		
-		public override double WindSpeedKPH {
+		public double WindSpeedKPH {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "windspeedKmph/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -65,7 +74,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 		
-		public override Direction WindDirection {
+		public Direction WindDirection {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "winddir16Point/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -74,7 +83,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 
-		public override double CloudCover {
+		public double CloudCover {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "cloudcover/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -83,7 +92,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 		
-		public override double Percipitation {
+		public double Percipitation {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "precipMM/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -92,7 +101,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 
-		public override double Humidity { 
+		public double Humidity { 
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "humidity/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -101,7 +110,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 		
-		public override WeatherCondition Conditions {
+		public WeatherCondition Conditions {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "weatherCode/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
@@ -114,7 +123,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 		
-		public WeatherCondition translateConditions(WWOWeatherCode code) {
+		protected WeatherCondition translateConditions(WWOWeatherCode code) {
 			switch (code) {
 				case WWOWeatherCode.Blizzard:
 					return WeatherCondition.Blizzard | WeatherCondition.Snow;

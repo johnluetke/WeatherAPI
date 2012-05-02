@@ -1,6 +1,6 @@
 using System;
 
-namespace WeatherAPI.WorldWeatherOnline {
+namespace WeatherAPI.Providers.WorldWeatherOnline {
 		
 	[Flags]
 	public enum WWOWeatherCode {
