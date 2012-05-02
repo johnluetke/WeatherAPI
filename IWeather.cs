@@ -22,11 +22,6 @@ namespace WeatherAPI {
 	public interface IWeather {
 		
 		/// <summary>
-		/// Refresh the weather data used by this interface.
-		/// </summary>
-		void Refresh();
-		
-		/// <summary>
 		/// Gets the degrees in Celcius at the time of the last update.
 		/// </summary>
 		/// <returns>
