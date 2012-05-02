@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BF440187-B024-4004-B425-B13F9F4DFBBF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>WeatherAPI</RootNamespace>
     <AssemblyName>WeatherAPI</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,17 +37,23 @@
   <ItemGroup>
     <Compile Include="Direction.cs" />
     <Compile Include="IWeather.cs" />
-    <Compile Include="Weather.cs" />
-    <Compile Include="WeatherTest.cs" />
     <Compile Include="WeatherCondition.cs" />
-    <Compile Include="WeatherCode.cs" />
+    <Compile Include="WeatherAPI.cs" />
+    <Compile Include="Providers\WorldWeatherOnline\WWOWeatherCode.cs" />
+    <Compile Include="Providers\WorldWeatherOnline\WWOProvider.cs" />
+    <Compile Include="Providers\WeatherProvider.cs" />
+    <Compile Include="Providers\LocationSource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WeatherAPI.exe.config">
+    <Content Include="WeatherAPI.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE.txt" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Providers\" />
   </ItemGroup>
 </Project>
