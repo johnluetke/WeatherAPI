@@ -30,4 +30,5 @@ WeatherAPI abstracts free weather services into a simple to use API. You will ne
 Supported Services
 -----------
 
-* [WorldWeatherOnline](http://worldweateronline.com)
+* [Google](http://www.google.com/ig/api?weather)
+* [WorldWeatherOnline](http://worldweatheronline.com)
