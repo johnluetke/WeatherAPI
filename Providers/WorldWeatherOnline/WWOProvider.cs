@@ -25,7 +25,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 		}
 		
 		public override void Update() {
-			string url = String.Format(WWO_API_URL, "98121", WWO_API_FORMAT, _wwo_api_key);
+			string url = String.Format(WWO_API_URL, Location, WWO_API_FORMAT, _wwo_api_key);
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 			
 			HttpWebResponse response = (HttpWebResponse)request.GetResponse();
