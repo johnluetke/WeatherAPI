@@ -21,7 +21,8 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 		}
 		
 		public override bool IsAvailable() {
-			return _dllConfig.AppSettings.Settings["WORLD_WEATER_ONLINE_API_KEY"] != null;
+			return _dllConfig.AppSettings.Settings["WORLD_WEATER_ONLINE_API_KEY"] != null &&
+					!String.IsNullOrEmpty(_dllConfig.AppSettings.Settings["WORLD_WEATER_ONLINE_API_KEY"].Value);
 		}
 		
 		public override void Update() {

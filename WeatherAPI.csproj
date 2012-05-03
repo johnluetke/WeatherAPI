@@ -43,6 +43,7 @@
     <Compile Include="Providers\WorldWeatherOnline\WWOProvider.cs" />
     <Compile Include="Providers\WeatherProvider.cs" />
     <Compile Include="Providers\LocationSource.cs" />
+    <Compile Include="Providers\iGoogle\iGoogleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="WeatherAPI.dll.config">
@@ -55,5 +56,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />
+    <Folder Include="Providers\iGoogle\" />
   </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="Hierarchical" ResourceNamePolicy="FileFormatDefault" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>
