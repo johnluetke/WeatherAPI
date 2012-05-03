@@ -109,8 +109,10 @@ namespace WeatherAPI {
 			
 			foreach (Type t in assemblyTypes) {
 				if (t.Namespace.Contains("WeatherAPI.Providers") && 
+				    !t.IsAbstract &&
 				    t.IsClass &&
-				    Activator.CreateInstance(t) is WeatherProvider) {
+				    Activator.CreateInstance(t) is WeatherProvider &&
+				    ((WeatherProvider)Activator.CreateInstance(t)).IsAvailable()) {
 					_providers.Add((WeatherProvider)Activator.CreateInstance(t));
 				}
 			}
@@ -133,14 +135,19 @@ namespace WeatherAPI {
 		/// LocationSource provided.
 		/// </exception>
 		private IWeather getInstance(LocationSource sourceType, string source) {
-			WeatherProvider provider = _providers[0];
-			if (provider.Supports(sourceType)) {
-				provider.Location = source;
-				provider.Update();
-				return (IWeather)provider;
+			
+			// Go through the available providers until we get one that can fulfill the request
+			foreach (WeatherProvider provider in _providers) {
+				if (provider.Supports(sourceType)) {
+					provider.Location = source;
+					provider.Source = sourceType;
+					provider.Update();
+					return (IWeather)provider;
+				}
 			}
 			
-			throw new ArgumentException(String.Format("Provider {0} does not support a {1} source", provider.GetType().Name, source));
+			// No providers can fullfill the request
+			throw new ArgumentException(String.Format("No available provider supports a {0} source", source));
 		}
 	}
 }
