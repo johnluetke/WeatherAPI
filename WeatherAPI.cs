@@ -72,7 +72,7 @@ namespace WeatherAPI {
 		/// the requested location 
 		/// </returns>		
 		public static IWeather GetWeather(int zipCode) {
-			return new WeatherAPI().getInstance(LocationSource.AirportCode, String.Format("{0}", zipCode));
+			return new WeatherAPI().getInstance(LocationSource.ZipCode, String.Format("{0}", zipCode));
 		}
 		
 		/// <summary>
@@ -91,7 +91,7 @@ namespace WeatherAPI {
 		/// the requested location 
 		/// </returns>			
 		public static IWeather GetWeather(double latitude, double longitude) {
-			return new WeatherAPI().getInstance(LocationSource.AirportCode, String.Format("{0},{1}", latitude, longitude));
+			return new WeatherAPI().getInstance(LocationSource.LatitudeLongitude, String.Format("{0},{1}", latitude, longitude));
 		}
 
 		private List<WeatherProvider> _providers;
