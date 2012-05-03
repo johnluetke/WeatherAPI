@@ -32,7 +32,8 @@ can use all or none of the supported services.
 Supported Services
 -----------
 
-* [WorldWeatherOnline](http://worldweateronline.com)
+* [Google](http://www.google.com/ig/api?weather)
+* [WorldWeatherOnline](http://worldweatheronline.com)
 
 Creating a New Provider
 ----------
