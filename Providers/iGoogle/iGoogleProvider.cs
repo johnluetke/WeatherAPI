@@ -113,6 +113,7 @@ namespace WeatherAPI.Providers.iGoogle {
 				
 				switch (val) {
 					case "Partly Sunny": return WeatherCondition.PartlyCloudy;
+					case "Partly Cloudy": return WeatherCondition.PartlyCloudy;
 					default:
 						return (WeatherCondition)Enum.Parse(typeof(WeatherCondition), val);
 				}	
