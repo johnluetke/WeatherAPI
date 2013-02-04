@@ -6,7 +6,27 @@ WeatherAPI is a simple abstraction atop one or many free weather services.
 How To Use
 ----------
 
+C#:
+
         using WeatherAPI;
+        
+        IWeather seattle;
+        
+        // You can get the weather for a city and state ...
+        seattle = WeatherAPI.GetWeather("Seattle", "WA");
+        
+        // ... for an Airport code ...
+        seattle = WeatherAPI.GetWeather("SEA");
+        
+        // ... for a ZIP code ...
+        seattle = WeatherAPI.GetWeather(98158);
+
+        // ... or for a set of latitude and longitude coordinates
+        seattle = WeatherAPI.GetWeather(47.44443, -122.300497);
+        
+Java: 
+
+        import WeatherAPI.*;
         
         IWeather seattle;
         
@@ -32,7 +52,6 @@ can use all or none of the supported services.
 Supported Services
 -----------
 
-* [Google](http://www.google.com/ig/api?weather)
 * [WorldWeatherOnline](http://worldweatheronline.com)
 
 Creating a New Provider
@@ -52,6 +71,5 @@ FAQ
 
 ### How can I use WeatherAPI with my mobile application?
 
-Since WeatherAPI is written in C#, it can be used on any mobile platform that supports the language.
-Out of the box, this is just Windows Phone. However, with commercial tools such as [MonoTouch](http://ios.xamarin.com) and [Mono
-for Android](http://android.xamarin.com), WeatherAPI can be used by iOS and Android apps as well.
+Since WeatherAPI is written in C# and Java, it can easily be used on any mobile platform that supports those languages
+Out of the box, this is just Windows Phone and Android. However, with commercial tools such as [MonoTouch](http://ios.xamarin.com), WeatherAPI can be used by iOS as well.
