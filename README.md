@@ -1,10 +1,24 @@
-WeatherAPI
-==========
+# WeatherAPI
 
 WeatherAPI is a simple abstraction atop one or many free weather services.
 
-How To Use
-----------
+## How To Use
+
+### Maven
+
+If you're using maven, simply add a dependency for `net.johnluetke.WeatherAPI`:
+
+        <groupId>net.johnluetke.WeatherAPI</groupId>
+                <artifactId>WeatherAPI</artifactId>
+                <version>1.0.0</version>
+        </dependency>
+        
+For a list of version numbers, see the [Changelog](CHANGELOG.md)
+
+### Other / .NET
+
+If you're not using Maven or are using .NET, download the .jar or .dll from my [artifacts repository](https://github.com/johnluetke/artifacts/WeatherAPI).
+Also make sure to download the required dependencies! They can be found in the file ending in `.dependencies`
 
 ### C&#35;
 
@@ -42,20 +56,17 @@ How To Use
         // ... or for a set of latitude and longitude coordinates
         seattle = WeatherAPI.GetWeather(47.44443, -122.300497);
         
-About
-----------
+## About
 
 WeatherAPI abstracts free weather services into a simple to use API. You will need to register 
 with the supported services and obtain an API key for them, should you choose to use them. You 
 can use all or none of the supported services. 
 
-Supported Services
------------
+## Supported Services
 
 * [WorldWeatherOnline](http://worldweatheronline.com)
 
-Creating a New Provider
-----------
+## Creating a New Provider
 
 WeatherAPI is built in a provider-agnostic way. That is, it is not tightly coupled to any one 
 specific source of data. It obtains data by means of providers, which are tightly coupled, but 
@@ -66,8 +77,7 @@ call the service and parse the data.
 WeatherAPI provides an abstract class for providers to derive from: WeatherProvider. All providers
 must inherit this class in order to be discovered. 
 
-FAQ
-----------
+## FAQ
 
 ### How can I use WeatherAPI with my mobile application?
 
