@@ -14,7 +14,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>..\..\..\target\</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -23,7 +23,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>..\..\,,\target</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -35,15 +35,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Direction.cs" />
-    <Compile Include="IWeather.cs" />
-    <Compile Include="WeatherCondition.cs" />
-    <Compile Include="WeatherAPI.cs" />
-    <Compile Include="Providers\WorldWeatherOnline\WWOWeatherCode.cs" />
-    <Compile Include="Providers\WorldWeatherOnline\WWOProvider.cs" />
-    <Compile Include="Providers\WeatherProvider.cs" />
-    <Compile Include="Providers\LocationSource.cs" />
-    <Compile Include="Providers\iGoogle\iGoogleProvider.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\Direction.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\IWeather.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\WeatherCondition.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\WeatherAPI.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\Providers\WorldWeatherOnline\WWOWeatherCode.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\Providers\WorldWeatherOnline\WWOProvider.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\Providers\WeatherProvider.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\Providers\LocationSource.cs" />
+    <Compile Include="..\dotnet\WeatherAPI\Providers\iGoogle\iGoogleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="WeatherAPI.dll.config">
@@ -51,12 +51,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LICENSE.txt" />
-    <None Include="README.md" />
+    <None Include="..\..\LICENSE.txt" />
+    <None Include="..\..\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Providers\" />
-    <Folder Include="Providers\iGoogle\" />
+    <Folder Include="..\dotnet\WeatherAPI\Providers\" />
+    <Folder Include="..\dotnet\WeatherAPI\Providers\iGoogle\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
