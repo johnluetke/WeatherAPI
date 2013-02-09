@@ -23,7 +23,7 @@ public class WeatherTest {
 	@Test
 	public void Main () {
 			
-		IWeather w = WeatherAPI.GetWeather("98121");
+		IWeather w = WeatherAPI.getWeather("98158");
 			
 		System.out.println(String.format("Degrees C:          %s", w.getDegreesCelcius()));
 		System.out.println(String.format("Degrees F:          %s", w.getDegressFahrienhiet()));

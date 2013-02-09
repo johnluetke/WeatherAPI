@@ -18,93 +18,72 @@ import WeatherAPI.Providers.LocationSource;
 import WeatherAPI.Providers.WeatherProvider;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import org.reflections.Reflections;
 
-/// <summary>
-/// Gateway class to the WeatherAPI.
-/// </summary>
-/// <exception cref='ArgumentException'>
-/// Thrown when an argument passed to a method is invalid.
-/// </exception>
+/**
+ * Gateway class to the WeatherAPI.
+ */
 public class WeatherAPI {
 	
 	private static final WeatherAPI INSTANCE = new WeatherAPI();
 	
-	/// <summary>
-	/// Gets the weather for the given city and state
-	/// </summary>
-	/// <remarks>
-	/// This is the most general level for which weather can be retrieved. 
-	/// </remarks>
-	/// <param name='city'>
-	/// City name for which weather information should be retrieved
-	/// </param>
-	/// <param name='state'>
-	/// State name for which weather information should be retrieved
-	/// </param>
-	/// <returns>
-	/// A class adhereing to IWeather which will contain weather data for 
-	/// the requested location 
-	/// </returns>
-	public static IWeather GetWeather(String city, String state) {
-		return WeatherAPI.getInstance(LocationSource.CityState, String.format("{0}, {1}", city, state));
+	/**
+	 * Gets the weather for the given city and state.
+	 *
+	 * @param city City name for which weather information should be retrieved
+	 * @param state State name for which weather information should be retrieved
+	 *
+	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * the requested location 
+	 */	
+	public static IWeather getWeather(String city, String state) {
+		return WeatherAPI.getInstance(LocationSource.CityState, String.format("%s, %s", city, state));
 	}
 
-	/// <summary>
-	/// Gets the weather for the given airport code
-	/// </summary>
-	/// <param name='airportCode'>
-	/// The Airport code for which weather information should be retrieved.
-	/// </param>
-	/// <returns>
-	/// A class adhereing to IWeather which will contain weather data for 
-	/// the requested location 
-	/// </returns>
-	public static IWeather GetWeather(String airportCode) {
+	/**
+	 * Gets the weather for the given airport code
+	 *
+	 * @param airportCode The Airport code for which weather information should be retrieved.
+	 *
+	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * the requested location 
+	 */	
+	public static IWeather getWeather(String airportCode) {
 		return WeatherAPI.getInstance(LocationSource.AirportCode, airportCode);
 	}
 
-	/// <summary>
-	/// Gets the weather for the given ZIP code
-	/// </summary>
-	/// <param name='zipCode'>
-	/// The ZIP code for which weather information should be retrieved.
-	/// </param>
-	/// <returns>
-	/// A class adhereing to IWeather which will contain weather data for 
-	/// the requested location 
-	/// </returns>		
-	public static IWeather GetWeather(int zipCode) {
-		return WeatherAPI.getInstance(LocationSource.ZipCode, String.format("{0}", zipCode));
+	/**
+	 * Gets the weather for the given ZIP code
+	 *
+	 * @param zipCode The ZIP code for which weather information should be retrieved.
+	 *
+	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * the requested location 
+	 */			
+	public static IWeather getWeather(int zipCode) {
+		return WeatherAPI.getInstance(LocationSource.ZipCode, String.format("%s", zipCode));
 	}
 
-	/// <summary>
-	/// Gets the weather for the given latitude and longitude
-	/// </summary>
-	/// <param name='latitude'>
-	/// The latitude coordinate for which weather information should be
-	/// retrieved.
-	/// </param>
-	/// <param name='longitude'>
-	/// The latitude coordinate for which weather information should be
-	/// retrieved.
-	/// </param>
-	/// <returns>
-	/// A class adhereing to IWeather which will contain weather data for 
-	/// the requested location 
-	/// </returns>			
-	public static IWeather GetWeather(double latitude, double longitude) {
-		return WeatherAPI.getInstance(LocationSource.LatitudeLongitude, String.format("{0},{1}", latitude, longitude));
+	/**
+	 * Gets the weather for the given latitude and longitude
+	 *
+	 * @param latitude The latitude coordinate for which weather information should be
+	 * @param longitude The longitude coordinate for which weather information should be retrieved.
+	 *
+	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * the requested location 
+	 */		
+	public static IWeather getWeather(double latitude, double longitude) {
+		return WeatherAPI.getInstance(LocationSource.LatitudeLongitude, String.format("%s,%s", latitude, longitude));
 	}
 
 	private List<WeatherProvider> _providers;
 
-	/// <summary>
-	/// Initializes a new instance of the WeatherAPI class. All providers
-	/// discovered via reflection and added to a List for use in 
-	/// getInstance
-	/// </summary>
+	/**
+	 * Initializes a new instance of the WeatherAPI class. All providers
+	 * discovered via reflection and added to a List for use in 
+	 * getInstance
+	 */
 	private WeatherAPI() {
 		_providers = new ArrayList<WeatherProvider>();
 
@@ -123,22 +102,16 @@ public class WeatherAPI {
 		}
 	}
 
-	/// <summary>
-	/// Factory method for obtaining an instance of a provider
-	/// </summary>
-	/// <param name='sourceType'>
-	/// Type of location that weather data will be retrieved from.
-	/// </param>
-	/// <param name='source'>
-	/// The string value of the source to give to the provider.
-	/// </param>
-	/// <returns>
-	/// An instance of IWeather containing weather data from the provider.
-	/// </returns>
-	/// <exception cref='ArgumentException'>
-	/// Is thrown when the provider cannot fetch weather data for the 
-	/// LocationSource provided.
-	/// </exception>
+	/**
+	 * Factory method for obtaining an instance of a provider
+	 *
+	 * @param sourceType Type of location that weather data will be retrieved from.
+	 * @param source The string value of the source to give to the provider.
+	 * 
+	 * @returns An instance of IWeather containing weather data from the provider.
+	 *
+	 * @throws ArgumentException when the provider cannot fetch weather data for the LocationSource provided.
+	 */
 	private static IWeather getInstance(LocationSource sourceType, String source) {
 		
 		// Go through the available providers until we get one that can fulfill the request
