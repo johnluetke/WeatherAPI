@@ -4,6 +4,11 @@ TestResults
 target
 
 .DS_Store
+settings.xml
 *.pidb
 *userprefs
+<<<<<<< HEAD
 *.class
+=======
+*.swp
+>>>>>>> Ignoring target/
