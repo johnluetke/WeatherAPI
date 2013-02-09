@@ -127,12 +127,12 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>sonatype-maven-central-snapshots</id>
+			<id>sonatype-nexus-staging</id>
 			<name>Sonatype Maven Central (Snapshots)</name>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 		<repository>
-			<id>sonatype-maven-central</id>
+			<id>sonatype-nexus-staging</id>
 			<name>Sonatype Maven Central</name>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
