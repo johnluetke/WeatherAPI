@@ -8,12 +8,13 @@ WeatherAPI is a simple abstraction atop one or many free weather services.
 
 If you're using maven, simply add a dependency for `net.johnluetke.WeatherAPI`:
 
+    <dependency>
         <groupId>net.johnluetke.WeatherAPI</groupId>
-                <artifactId>WeatherAPI</artifactId>
-                <version>1.0.0</version>
-        </dependency>
+        <artifactId>WeatherAPI</artifactId>
+        <version>0.9.3</version>
+    </dependency>
         
-For a list of version numbers, see the [Changelog](CHANGELOG.md)
+For a list of version numbers, see the [Changelog](CHANGELOG.md) or [tags](https://github.com/johnluetke/WeatherAPI/tags)
 
 ### Other / .NET
 
