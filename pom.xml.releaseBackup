@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.johnluetke.WeatherAPI</groupId>
 	<artifactId>WeatherAPI</artifactId>
-	<version>0.9-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>WeatherAPI</name>
@@ -27,8 +27,7 @@
 		<url>https://github.com/johnluetke/WeatherAPI.git</url>
 		<connection>https://github.com/johnluetke/WeatherAPI.git</connection>
 		<developerConnection>scm:git:https://github.com/johnluetke/WeatherAPI.git</developerConnection>
-	  <tag>WeatherAPI-0.9</tag>
-  </scm>
+	</scm>
 
 	<licenses>
 		<license>
