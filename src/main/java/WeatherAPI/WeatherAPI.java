@@ -29,6 +29,8 @@ import org.reflections.Reflections;
 /// </exception>
 public class WeatherAPI {
 	
+	private static final WeatherAPI INSTANCE = new WeatherAPI();
+	
 	/// <summary>
 	/// Gets the weather for the given city and state
 	/// </summary>
@@ -46,7 +48,7 @@ public class WeatherAPI {
 	/// the requested location 
 	/// </returns>
 	public static IWeather GetWeather(String city, String state) {
-		return new WeatherAPI().getInstance(LocationSource.CityState, String.format("{0}, {1}", city, state));
+		return WeatherAPI.getInstance(LocationSource.CityState, String.format("{0}, {1}", city, state));
 	}
 
 	/// <summary>
@@ -60,7 +62,7 @@ public class WeatherAPI {
 	/// the requested location 
 	/// </returns>
 	public static IWeather GetWeather(String airportCode) {
-		return new WeatherAPI().getInstance(LocationSource.AirportCode, airportCode);
+		return WeatherAPI.getInstance(LocationSource.AirportCode, airportCode);
 	}
 
 	/// <summary>
@@ -74,7 +76,7 @@ public class WeatherAPI {
 	/// the requested location 
 	/// </returns>		
 	public static IWeather GetWeather(int zipCode) {
-		return new WeatherAPI().getInstance(LocationSource.ZipCode, String.format("{0}", zipCode));
+		return WeatherAPI.getInstance(LocationSource.ZipCode, String.format("{0}", zipCode));
 	}
 
 	/// <summary>
@@ -93,7 +95,7 @@ public class WeatherAPI {
 	/// the requested location 
 	/// </returns>			
 	public static IWeather GetWeather(double latitude, double longitude) {
-		return new WeatherAPI().getInstance(LocationSource.LatitudeLongitude, String.format("{0},{1}", latitude, longitude));
+		return WeatherAPI.getInstance(LocationSource.LatitudeLongitude, String.format("{0},{1}", latitude, longitude));
 	}
 
 	private List<WeatherProvider> _providers;
@@ -137,10 +139,10 @@ public class WeatherAPI {
 	/// Is thrown when the provider cannot fetch weather data for the 
 	/// LocationSource provided.
 	/// </exception>
-	private IWeather getInstance(LocationSource sourceType, String source) {
+	private static IWeather getInstance(LocationSource sourceType, String source) {
 		
 		// Go through the available providers until we get one that can fulfill the request
-		for (WeatherProvider provider : _providers) {
+		for (WeatherProvider provider : INSTANCE._providers) {
 			if (provider.Supports(sourceType)) {
 				provider.setLocation(source);
 				provider.setSource(sourceType);
