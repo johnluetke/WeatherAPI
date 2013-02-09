@@ -6,9 +6,6 @@ target
 .DS_Store
 settings.xml
 *.pidb
-*userprefs
-<<<<<<< HEAD
+*.userprefs
 *.class
-=======
 *.swp
->>>>>>> Ignoring target/
