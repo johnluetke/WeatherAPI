@@ -18,7 +18,7 @@ For a list of version numbers, see the [Changelog](CHANGELOG.md) or [tags](https
 
 ### Other / .NET
 
-If you're not using Maven or are using .NET, download the .jar or .dll from my [artifacts repository](https://github.com/johnluetke/artifacts/WeatherAPI).
+If you're not using Maven or are using .NET, download the .jar or .dll from my [artifacts repository](https://github.com/johnluetke/artifacts/tree/master/WeatherAPI).
 Also make sure to download the required dependencies! They can be found in the file ending in `.dependencies`
 
 ### C&#35;
