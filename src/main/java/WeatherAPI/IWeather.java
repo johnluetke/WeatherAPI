@@ -21,78 +21,67 @@ import java.util.EnumSet;
  */
 public interface IWeather {
 	
-	/// <summary>
-	/// Gets the degrees in Celcius at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The degrees in Celcius.
-	/// </returns>
+	/**
+	 * Gets the degrees in Celcius at the time of the last update.
+	 * 
+	 * @return The degrees in Celcius.
+	 */
 	double getDegreesCelcius();
 
-	/// <summary>
-	/// Gets the degress in Fahrienhiet at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The degress in Fahrienhiet.
-	/// </returns>
+	/**
+	 * Gets the degress in Fahrienhiet at the time of the last update.
+	 * 
+	 * @return The degress in Fahrienhiet.
+	 */
 	double getDegressFahrienhiet();
 	
-	/// <summary>
-	/// Gets the wind speed in miles per hour at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The wind speed in MPH.
-	/// </returns>
+	/**
+	 * Gets the wind speed in miles per hour at the time of the last update.
+	 * 
+	 * @return The wind speed in MPH.
+	 */
 	double getWindSpeedMPH();
 	
-	/// <summary>
-	/// Gets the wind speed in kilometers per hour at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The wind speed in KPH.
-	/// </returns>
+	/**
+	 * Gets the wind speed in kilometers per hour at the time of the last update.
+	 * 
+	 * @return The wind speed in KPH.
+	 */
 	double getWindSpeedKPH();
 	
-	/// <summary>
-	/// Gets the wind direction at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The wind direction.
-	/// </returns>
+	/**
+	 * Gets the wind direction at the time of the last update.
+	 * 
+	 * @return The wind direction.
+	 */
 	Direction getWindDirection();
 	
-	/// <summary>
-	/// Gets the cloud cover at the time of the last update.
-	/// </summary>
-	/// <remarks>
-	/// The value returned is a percentage. 0 is no clouds, 100 is overcast.
-	/// </remarks>
-	/// <returns>
-	/// The cloud cover.
-	/// </returns>
+	/**
+	 * Gets the cloud cover at the time of the last update. The value returned 
+	 * is a percentage. 0 is no clouds, 100 is overcast.
+	 * 
+	 * @return The cloud cover.
+	 */
 	double getCloudCover();
 	
-	/// <summary>
-	/// Gets the percipitation in millimeters at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The percipitation in millimeters
-	/// </returns>
+	/**
+	 * Gets the percipitation in millimeters at the time of the last update.
+	 * 
+	 * @return The percipitation in millimeters
+	 */
 	double getPercipitation();
 	
-	/// <summary>
-	/// Gets the humidity at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The humidity.
-	/// </returns>
+	/**
+	 * Gets the humidity at the time of the last update.
+	 * 
+	 * @return The humidity.
+	 */
 	double getHumidity();
 	
-	/// <summary>
-	/// Gets the weather conditions at the time of the last update.
-	/// </summary>
-	/// <returns>
-	/// The weather conditions.
-	/// </returns>
+	/**
+	 * Gets the weather conditions at the time of the last update.
+	 * 
+	 * @return The weather conditions.
+	 */
 	EnumSet<WeatherCondition> getConditions();
 }

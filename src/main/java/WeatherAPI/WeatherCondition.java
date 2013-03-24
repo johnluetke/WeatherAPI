@@ -14,9 +14,9 @@
 
 package WeatherAPI;
 	
-/// <summary>
-/// Represents different weather conditions. These can be OR'd together to create complex conditions.
-/// </summary>
+/**
+ * Represents different weather conditions. These can be OR'd together to create complex conditions.
+ */
 public enum WeatherCondition {
 	Overcast,
 	Cloudy,
