@@ -6,6 +6,10 @@ target
 .DS_Store
 settings.xml
 *.pidb
+<<<<<<< HEAD
 *.userprefs
+=======
+*userprefs
+>>>>>>> Updating gitignore
 *.class
 *.swp
