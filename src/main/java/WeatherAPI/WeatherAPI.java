@@ -116,7 +116,7 @@ public class WeatherAPI {
 		
 		// Go through the available providers until we get one that can fulfill the request
 		for (WeatherProvider provider : INSTANCE._providers) {
-			if (provider.Supports(sourceType)) {
+			if (provider.IsAvailable() && provider.Supports(sourceType)) {
 				provider.setLocation(source);
 				provider.setSource(sourceType);
 				provider.Update();
