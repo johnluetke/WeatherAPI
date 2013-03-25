@@ -29,7 +29,7 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 
 	public boolean IsAvailable() {
 		return PROPERTIES.containsKey("WORLD_WEATHER_ONLINE_API_KEY") &&
-			   (PROPERTIES.getProperty("WORLD_WEATHER_ONLINE_API_KEY") != null ||
+			   (PROPERTIES.getProperty("WORLD_WEATHER_ONLINE_API_KEY") != null &&
 				!PROPERTIES.getProperty("WORLD_WEATHER_ONLINE_API_KEY").equals(""));
 	}
 
