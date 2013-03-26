@@ -125,7 +125,7 @@ public class WeatherAPI {
 		}
 
 		// No providers can fullfill the request
-		throw new IllegalArgumentException(String.format("No available provider supports a %s source", source));
+		throw new IllegalArgumentException(String.format("No available provider supports a %s source: %s", sourceType, source));
 	}
 }
 
