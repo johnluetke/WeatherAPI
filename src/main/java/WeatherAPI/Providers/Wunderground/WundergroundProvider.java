@@ -181,6 +181,8 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		// Special conditions
 		if (val.equals("Scattered Clouds"))
 			return EnumSet.of(WeatherCondition.PartlyCloudy);
+		else if (val.equals("Mostly Cloudy"))
+			return EnumSet.of(WeatherCondition.Cloudy);
 			
 		for (String condition : val.split(" ")) {
 			conditions.add(WeatherCondition.valueOf(condition));
