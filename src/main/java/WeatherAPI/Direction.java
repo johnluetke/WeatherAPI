@@ -18,6 +18,8 @@ package WeatherAPI;
  * Represents the compass directions. Provides the 16 points of direction
  */
 public enum Direction {
+	Variable("Variable"),
+	
 	N("N", "North"),
 	E("E", "East"),
 	S("S", "South"),
@@ -59,7 +61,7 @@ public enum Direction {
 	}
 
 	/**
-	 * More verbose way to convert a string into a Direction. Consider's Direction aliases
+	 * More verbose way to convert a string into a Direction. Considers Direction aliases
 	 * 
 	 * @param value the string to parse
 	 * 
