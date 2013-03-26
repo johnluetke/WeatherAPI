@@ -111,6 +111,7 @@
 			<plugin>
 				<groupId>org.kohsuke</groupId>
 				<artifactId>pgp-maven-plugin</artifactId>
+				<version>1.0</version>
 				<executions>
 					<execution>
 						<goals>
