@@ -125,7 +125,7 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>sonatype-nexus-staging</id>
+			<id>sonatype-nexus-snapshots</id>
 			<name>Sonatype Maven Central (Snapshots)</name>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
