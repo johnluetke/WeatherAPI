@@ -2,6 +2,8 @@
 
 WeatherAPI is a simple abstraction atop one or many free weather services.
 
+[Javadoc](http://jenkins.johnluetke.net/view/WeatherAPI/job/WeatherAPI%20-%20master/javadoc/) | [Jenkins](http://jenkins.johnluetke.net/view/WeatherAPI/)
+
 ## How To Use
 
 ### Maven
