@@ -9,12 +9,13 @@
     <OutputType>Library</OutputType>
     <RootNamespace>WeatherAPI</RootNamespace>
     <AssemblyName>WeatherAPI</AssemblyName>
+	<MavenTargetDir>..\..\..\target\</MavenTargetDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\target\</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -23,7 +24,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\target\</OutputPath>
+    <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -34,6 +35,7 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
@@ -56,4 +58,15 @@
     <Compile Include="WeatherAPI\WindDirection.cs" />
     <Compile Include="WeatherAPI\Providers\LocationType.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <OutputFiles Include="$(OutputPath)$(AssemblyName).dll"/>
+  </ItemGroup>
+  <Target Name="MavenVersionFile" AfterTargets="DeployOutputFiles">
+    <XmlRead XmlFileName="..\..\..\pom.xml" XPath="/ns:project/ns:version" Namespace="http://maven.apache.org/POM/4.0.0" Prefix="ns">
+      <Output PropertyName="BuildVersion" TaskParameter="Value"/>
+	</XmlRead>
+	<Copy SourceFiles="@(OutputFiles)" DestinationFiles="@(OutputFiles->'$(MavenTargetDir)$(AssemblyName)-$(BuildVersion).dll')" />
+	<Message Text="$(BuildVersion)"/>
+  </Target>
+
 </Project>
