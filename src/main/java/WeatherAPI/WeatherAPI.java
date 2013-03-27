@@ -118,7 +118,7 @@ public class WeatherAPI {
 		for (WeatherProvider provider : INSTANCE._providers) {
 			if (provider.IsAvailable() && provider.Supports(sourceType)) {
 				provider.setLocation(source);
-				provider.setSource(sourceType);
+				provider.setLocationType(sourceType);
 				provider.Update();
 				return (IWeather)provider;
 			}

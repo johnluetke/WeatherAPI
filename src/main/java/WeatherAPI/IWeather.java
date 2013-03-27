@@ -14,12 +14,27 @@
 
 package WeatherAPI;
 	
+import WeatherAPI.Providers.LocationType;
 import java.util.EnumSet;
 
 /**
  * Interface for obtaining weather information from an abstracted service
  */
 public interface IWeather {
+	
+	/**
+	 * Gets the type of location used to retrieve weather data
+	 * 
+	 * @return type of location
+	 */
+	LocationType getLocationType();
+	
+	/**
+	 * Gets the location used to retrieve weather data
+	 * 
+	 * @return location
+	 */
+	String getLocation();
 	
 	/**
 	 * Gets the degrees in Celcius at the time of the last update.

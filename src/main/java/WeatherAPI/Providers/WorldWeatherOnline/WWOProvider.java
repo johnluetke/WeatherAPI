@@ -142,6 +142,14 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 
 		return currentCondition;
 	}
+	
+	public String getLocation() {
+		return super.getLocation();
+	}
+	
+	public LocationType getLocationType() {
+		return super.getLocationType();
+	}
 
 	protected EnumSet<WeatherCondition> translateConditions(WWOWeatherCode code) {
 		switch (code) {

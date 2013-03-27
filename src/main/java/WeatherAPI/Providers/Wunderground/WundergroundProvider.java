@@ -215,13 +215,17 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 	
 	@Override
 	public String getLocation() {
-		if (getSource() == LocationType.CityState) {
+		if (getLocationType() == LocationType.CityState) {
 			String[] parts = super.getLocation().split(",");
 			return String.format("%s/%s", parts[1].trim(), parts[0].trim());
 		}
 		else {
 			return super.getLocation();
 		}
+	}
+	
+	public LocationType getLocationType() {
+		return super.getLocationType();
 	}
 	
 }
