@@ -1,6 +1,6 @@
 package WeatherAPI.Providers.WorldWeatherOnline;
 	
-import WeatherAPI.Direction;
+import WeatherAPI.WindDirection;
 import WeatherAPI.IWeather;
 import WeatherAPI.Providers.LocationSource;
 import WeatherAPI.Providers.WeatherProvider;
@@ -99,12 +99,12 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 		return Double.parseDouble(val.toString());
 	}
 
-	public Direction getWindDirection() {
+	public WindDirection getWindDirection() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WWO_XPATH_HEADER, "winddir16Point/text()");
 		Object val = _reader.read(xpath);
 
-		return Direction.valueOf(val.toString());
+		return WindDirection.valueOf(val.toString());
 	}
 
 	public double getCloudCover() {

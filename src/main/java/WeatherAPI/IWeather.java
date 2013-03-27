@@ -54,7 +54,7 @@ public interface IWeather {
 	 * 
 	 * @return The wind direction.
 	 */
-	Direction getWindDirection();
+	WindDirection getWindDirection();
 	
 	/**
 	 * Gets the cloud cover at the time of the last update. The value returned 

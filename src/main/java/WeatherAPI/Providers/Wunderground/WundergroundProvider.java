@@ -15,7 +15,7 @@
  */
 package WeatherAPI.Providers.Wunderground;
 
-import WeatherAPI.Direction;
+import WeatherAPI.WindDirection;
 import WeatherAPI.IWeather;
 import WeatherAPI.Providers.LocationSource;
 import WeatherAPI.Providers.WeatherProvider;
@@ -137,12 +137,12 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		return Double.parseDouble(val.toString());
 	}
 
-	public Direction getWindDirection() {
+	public WindDirection getWindDirection() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WU_XPATH_HEADER, "wind_dir/text()");
 		Object val = _reader.read(xpath);
 		
-		return Direction.getValue(val.toString());
+		return WindDirection.getValue(val.toString());
 	}
 
 	public double getCloudCover() {

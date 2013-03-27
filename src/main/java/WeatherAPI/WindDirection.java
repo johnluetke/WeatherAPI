@@ -17,7 +17,7 @@ package WeatherAPI;
 /**
  * Represents the compass directions. Provides the 16 points of direction
  */
-public enum Direction {
+public enum WindDirection {
 	Variable("Variable"),
 	
 	N("N", "North"),
@@ -47,12 +47,12 @@ public enum Direction {
 	 * 
 	 * @param alias 
 	 */
-	private Direction(String... alias) {
+	private WindDirection(String... alias) {
 		_aliases = alias;
 	}
 	
 	/**
-	 * Gets all aliases for this Direction
+	 * Gets all aliases for this WindDirection
 	 * 
 	 * @return 
 	 */
@@ -61,16 +61,16 @@ public enum Direction {
 	}
 
 	/**
-	 * More verbose way to convert a string into a Direction. Considers Direction aliases
+	 * More verbose way to convert a string into a WindDirection. Considers WindDirection aliases
 	 * 
 	 * @param value the string to parse
 	 * 
-	 * @return Direction corresponding to the given string
+	 * @return WindDirection corresponding to the given string
 	 * 
 	 * @throws IllegalArgumentException if no match is found
 	 */
-	public static Direction getValue(String value) {
-		for (Direction d : Direction.values()) {
+	public static WindDirection getValue(String value) {
+		for (WindDirection d : WindDirection.values()) {
 			for (String alias : d.getAliases()) {
 				if (alias.equalsIgnoreCase(value)) {
 					return d;
