@@ -20,7 +20,7 @@ namespace WeatherAPI.Providers {
 	/// Defines the possible locations that may be given to a WeatherProvider 
 	/// for which weather information can be fetched.
 	/// </summary>
-	public enum LocationSource {
+	public enum LocationType {
 		
 		/// <summary>
 		/// Airport Code.
