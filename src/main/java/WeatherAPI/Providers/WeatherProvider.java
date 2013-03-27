@@ -124,14 +124,14 @@ public abstract class WeatherProvider implements IWeather  {
 	/**
 	 * Gets or sets the LocationType for the provider.
 	 */
-	public LocationType getSource() {
+	public LocationType getLocationType() {
 		return _source;
 	}
 
 	/**
 	 * Sets the LocationType for the provider.
 	 */
-	public void setSource(LocationType source) {
+	public void setLocationType(LocationType source) {
 		_source = source;
 	}
 
