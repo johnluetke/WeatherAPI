@@ -23,7 +23,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\,,\target</OutputPath>
+    <OutputPath>..\..\..\target\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -34,30 +34,6 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Compile Include="..\dotnet\WeatherAPI\Direction.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\IWeather.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\WeatherCondition.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\WeatherAPI.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\Providers\WorldWeatherOnline\WWOWeatherCode.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\Providers\WorldWeatherOnline\WWOProvider.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\Providers\WeatherProvider.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\Providers\LocationSource.cs" />
-    <Compile Include="..\dotnet\WeatherAPI\Providers\iGoogle\iGoogleProvider.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="WeatherAPI.dll.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\LICENSE.txt" />
-    <None Include="..\..\README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="..\dotnet\WeatherAPI\Providers\" />
-    <Folder Include="..\dotnet\WeatherAPI\Providers\iGoogle\" />
-  </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
@@ -67,4 +43,17 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="WeatherAPI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WeatherAPI\IWeather.cs" />
+    <Compile Include="WeatherAPI\WeatherAPI.cs" />
+    <Compile Include="WeatherAPI\WeatherCondition.cs" />
+    <Compile Include="WeatherAPI\Providers\WeatherProvider.cs" />
+    <Compile Include="WeatherAPI\Providers\WorldWeatherOnline\WWOProvider.cs" />
+    <Compile Include="WeatherAPI\Providers\WorldWeatherOnline\WWOWeatherCode.cs" />
+    <Compile Include="WeatherAPI\WindDirection.cs" />
+    <Compile Include="WeatherAPI\Providers\LocationType.cs" />
+  </ItemGroup>
 </Project>
