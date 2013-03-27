@@ -26,7 +26,7 @@ namespace WeatherAPI.Providers {
 		protected Configuration _dllConfig;
 		
 		protected String _location;
-		protected LocationSource _source;
+		protected LocationType _source;
 		
 		/// <summary>
 		/// Initializes a new instance of the <see cref="WeatherAPI.Providers.WeatherProvider"/> class. 
@@ -58,7 +58,7 @@ namespace WeatherAPI.Providers {
 		/// <returns>
 		/// True if the provider supports the given source, false otherwise
 		/// </returns>
-		public abstract bool Supports(LocationSource source);
+		public abstract bool Supports(LocationType source);
 		
 		/// <summary>
 		/// Gets or sets the location for the provider to fetch information for.
@@ -77,7 +77,7 @@ namespace WeatherAPI.Providers {
 		/// <value>
 		/// The source.
 		/// </value>
-		public LocationSource Source {
+		public LocationType Source {
 			get { return _source; }
 			set { _source = value; }
 		}

@@ -44,7 +44,7 @@ namespace WeatherAPI {
 		/// the requested location 
 		/// </returns>
 		public static IWeather GetWeather(string city, string state) {
-			return new WeatherAPI().getInstance(LocationSource.CityState, String.Format("{0}, {1}", city, state));
+			return new WeatherAPI().getInstance(LocationType.CityState, String.Format("{0}, {1}", city, state));
 		}
 		
 		/// <summary>
@@ -58,7 +58,7 @@ namespace WeatherAPI {
 		/// the requested location 
 		/// </returns>
 		public static IWeather GetWeather(string airportCode) {
-			return new WeatherAPI().getInstance(LocationSource.AirportCode, airportCode);
+			return new WeatherAPI().getInstance(LocationType.AirportCode, airportCode);
 		}
 		
 		/// <summary>
@@ -72,7 +72,7 @@ namespace WeatherAPI {
 		/// the requested location 
 		/// </returns>		
 		public static IWeather GetWeather(int zipCode) {
-			return new WeatherAPI().getInstance(LocationSource.ZipCode, String.Format("{0}", zipCode));
+			return new WeatherAPI().getInstance(LocationType.ZipCode, String.Format("{0}", zipCode));
 		}
 		
 		/// <summary>
@@ -91,7 +91,7 @@ namespace WeatherAPI {
 		/// the requested location 
 		/// </returns>			
 		public static IWeather GetWeather(double latitude, double longitude) {
-			return new WeatherAPI().getInstance(LocationSource.LatitudeLongitude, String.Format("{0},{1}", latitude, longitude));
+			return new WeatherAPI().getInstance(LocationType.LatitudeLongitude, String.Format("{0},{1}", latitude, longitude));
 		}
 
 		private List<WeatherProvider> _providers;
@@ -134,7 +134,7 @@ namespace WeatherAPI {
 		/// Is thrown when the provider cannot fetch weather data for the 
 		/// LocationSource provided.
 		/// </exception>
-		private IWeather getInstance(LocationSource sourceType, string source) {
+		private IWeather getInstance(LocationType sourceType, string source) {
 			
 			// Go through the available providers until we get one that can fulfill the request
 			foreach (WeatherProvider provider in _providers) {

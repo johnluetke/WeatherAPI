@@ -35,7 +35,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			_xpath = new XPathDocument(new StringReader(xml));
 		}
 		
-		public override bool Supports(LocationSource source) { 
+		public override bool Supports(LocationType source) { 
 			return true;
 		}
 		
