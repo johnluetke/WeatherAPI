@@ -147,6 +147,10 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 		return super.getLocation();
 	}
 	
+	public String getLocationName() {
+		return this.getLocation();
+	}
+	
 	public LocationType getLocationType() {
 		return super.getLocationType();
 	}

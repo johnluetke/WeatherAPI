@@ -213,7 +213,6 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		return conditions;
 	}
 	
-	@Override
 	public String getLocation() {
 		if (getLocationType() == LocationType.CityState) {
 			String[] parts = super.getLocation().split(",");
@@ -222,6 +221,21 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		else {
 			return super.getLocation();
 		}
+	}
+	
+	public String getLocationName() {
+		String xpath;
+		switch (getLocationType()) {
+			case AirportCode:
+				xpath = String.format(WU_XPATH_HEADER, "display_location/city/text()");
+				break;
+			default:
+				return getLocation();
+		}
+		
+		Object val = _reader.read(xpath);
+
+		return val.toString();
 	}
 	
 	public LocationType getLocationType() {

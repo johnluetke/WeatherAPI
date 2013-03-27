@@ -37,6 +37,13 @@ public interface IWeather {
 	String getLocation();
 	
 	/**
+	 * Gets the the friendly name of the location
+	 * 
+	 * @return location
+	 */
+	String getLocationName();
+	
+	/**
 	 * Gets the degrees in Celcius at the time of the last update.
 	 * 
 	 * @return The degrees in Celcius.
