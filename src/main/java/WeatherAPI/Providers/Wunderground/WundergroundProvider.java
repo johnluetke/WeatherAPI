@@ -17,7 +17,7 @@ package WeatherAPI.Providers.Wunderground;
 
 import WeatherAPI.WindDirection;
 import WeatherAPI.IWeather;
-import WeatherAPI.Providers.LocationSource;
+import WeatherAPI.Providers.LocationType;
 import WeatherAPI.Providers.WeatherProvider;
 import WeatherAPI.WeatherCondition;
 import java.io.IOException;
@@ -101,7 +101,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 	}
 
 	@Override
-	public boolean Supports(LocationSource source) {
+	public boolean Supports(LocationType source) {
 		return true;
 	}
 
@@ -215,7 +215,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 	
 	@Override
 	public String getLocation() {
-		if (getSource() == LocationSource.CityState) {
+		if (getSource() == LocationType.CityState) {
 			String[] parts = super.getLocation().split(",");
 			return String.format("%s/%s", parts[1].trim(), parts[0].trim());
 		}

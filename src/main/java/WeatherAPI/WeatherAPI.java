@@ -14,7 +14,7 @@
 
 package WeatherAPI;
 
-import WeatherAPI.Providers.LocationSource;
+import WeatherAPI.Providers.LocationType;
 import WeatherAPI.Providers.WeatherProvider;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class WeatherAPI {
 	 * the requested location 
 	 */	
 	public static IWeather getWeather(String city, String state) {
-		return WeatherAPI.getInstance(LocationSource.CityState, String.format("%s, %s", city, state));
+		return WeatherAPI.getInstance(LocationType.CityState, String.format("%s, %s", city, state));
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class WeatherAPI {
 	 * the requested location 
 	 */	
 	public static IWeather getWeather(String airportCode) {
-		return WeatherAPI.getInstance(LocationSource.AirportCode, airportCode);
+		return WeatherAPI.getInstance(LocationType.AirportCode, airportCode);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class WeatherAPI {
 	 * the requested location 
 	 */			
 	public static IWeather getWeather(int zipCode) {
-		return WeatherAPI.getInstance(LocationSource.ZipCode, String.format("%s", zipCode));
+		return WeatherAPI.getInstance(LocationType.ZipCode, String.format("%s", zipCode));
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class WeatherAPI {
 	 * the requested location 
 	 */		
 	public static IWeather getWeather(double latitude, double longitude) {
-		return WeatherAPI.getInstance(LocationSource.LatitudeLongitude, String.format("%s,%s", latitude, longitude));
+		return WeatherAPI.getInstance(LocationType.LatitudeLongitude, String.format("%s,%s", latitude, longitude));
 	}
 
 	private List<WeatherProvider> _providers;
@@ -110,9 +110,9 @@ public class WeatherAPI {
 	 * 
 	 * @returns An instance of IWeather containing weather data from the provider.
 	 *
-	 * @throws ArgumentException when the provider cannot fetch weather data for the LocationSource provided.
+	 * @throws ArgumentException when the provider cannot fetch weather data for the LocationType provided.
 	 */
-	private static IWeather getInstance(LocationSource sourceType, String source) {
+	private static IWeather getInstance(LocationType sourceType, String source) {
 		
 		// Go through the available providers until we get one that can fulfill the request
 		for (WeatherProvider provider : INSTANCE._providers) {

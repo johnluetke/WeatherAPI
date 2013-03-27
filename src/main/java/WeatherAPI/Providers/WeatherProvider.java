@@ -42,7 +42,7 @@ public abstract class WeatherProvider implements IWeather  {
 	private static long _refreshInterval = 1800000; // Default value of 30 mins
 	
 	protected String _location;
-	protected LocationSource _source;
+	protected LocationType _source;
 	protected long _lastUpdate = 0;
 	
 	static {
@@ -95,13 +95,13 @@ public abstract class WeatherProvider implements IWeather  {
 	public abstract void Update();
 	
 	/**
-	 * Determines if the provider supports the specified LocationSource.
+	 * Determines if the provider supports the specified LocationType.
 	 *
-	 * @param source The LocationSource to test support for.
+	 * @param source The LocationType to test support for.
 	 * 
 	 * @return True if the provider supports the given source, false otherwise
 	 */
-	public abstract boolean Supports(LocationSource source);
+	public abstract boolean Supports(LocationType source);
 	
 	/**
 	 * Gets the location that the provider is to fetch information for.
@@ -122,16 +122,16 @@ public abstract class WeatherProvider implements IWeather  {
 	}
 
 	/**
-	 * Gets or sets the LocationSource for the provider.
+	 * Gets or sets the LocationType for the provider.
 	 */
-	public LocationSource getSource() {
+	public LocationType getSource() {
 		return _source;
 	}
 
 	/**
-	 * Sets the LocationSource for the provider.
+	 * Sets the LocationType for the provider.
 	 */
-	public void setSource(LocationSource source) {
+	public void setSource(LocationType source) {
 		_source = source;
 	}
 

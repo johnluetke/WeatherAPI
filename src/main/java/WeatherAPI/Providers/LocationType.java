@@ -18,7 +18,7 @@ package WeatherAPI.Providers;
  * Defines the possible locations that may be given to a WeatherProvider 
  * for which weather information can be fetched.
  */
-public enum LocationSource {
+public enum LocationType {
 	
 	/**
 	 * Airport Code.

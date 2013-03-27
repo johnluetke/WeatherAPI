@@ -2,7 +2,7 @@ package WeatherAPI.Providers.WorldWeatherOnline;
 	
 import WeatherAPI.WindDirection;
 import WeatherAPI.IWeather;
-import WeatherAPI.Providers.LocationSource;
+import WeatherAPI.Providers.LocationType;
 import WeatherAPI.Providers.WeatherProvider;
 import WeatherAPI.WeatherCondition;
 import java.io.IOException;
@@ -63,7 +63,7 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 		}
 	}
 
-	public boolean Supports(LocationSource source) { 
+	public boolean Supports(LocationType source) { 
 		return true;
 	}
 
