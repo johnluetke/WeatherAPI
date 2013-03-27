@@ -67,8 +67,7 @@ can use all or none of the supported services.
 
 ## Supported Services
 
-* [WorldWeatherOnline](http://worldweatheronline.com)
-* [Wunderground](http://www.wunderground.com/?apiref=a036a431b7eb420b)
+* Consult the [Providers wiki page](https://github.com/johnluetke/WeatherAPI/wiki/Providers)
 
 ## Creating a New Provider
 
