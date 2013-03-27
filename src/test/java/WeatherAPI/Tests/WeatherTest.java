@@ -21,10 +21,37 @@ import org.junit.Test;
 public class WeatherTest {
 		
 	@Test
-	public void Main () {
-			
-		IWeather w = WeatherAPI.getWeather("98158");
-			
+	public void testAirportCodes() {
+		
+		String[] airports = new String[] {
+			"SEA",
+			"SFO",
+			"LAX",
+			"ORD",
+			"DEN",
+			"ATL",
+			"JFK",
+			"LHR",
+			"HND",
+			"CDG",
+			"HKG",
+			"MAD"
+		};
+		
+		for (int i = 0; i < airports.length; i++) {
+			if (i != 0 && i % 10 == 0) {
+				try {
+					Thread.sleep(60 * 1000);
+				}
+				catch (Exception e) {
+					
+				}
+			}
+			printWeather(WeatherAPI.getWeather(airports[i]));
+		}
+	}
+	
+	private void printWeather(IWeather w) {
 		System.out.println(String.format("Degrees C:          %s", w.getDegreesCelcius()));
 		System.out.println(String.format("Degrees F:          %s", w.getDegressFahrienhiet()));
 		System.out.println(String.format("Wind (MPH):         %s", w.getWindSpeedMPH()));
@@ -34,6 +61,7 @@ public class WeatherTest {
 		System.out.println(String.format("Clouds:             %s", w.getCloudCover()));
 		System.out.println(String.format("Humidity:           %s", w.getHumidity()));
 		System.out.println(String.format("Conditions:         %s", w.getConditions()));
+		System.out.println();
 	}
 }
 
