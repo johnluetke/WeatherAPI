@@ -22,7 +22,9 @@ namespace WeatherAPI {
 	/// <remarks>
 	/// Provides the 16 points of direction
 	/// </remarks>
-	public enum Direction {
+	public enum WindDirection {
+		Variable,
+
 		N, E, S, W,	
 		NE, SE, NW, SW,
 		NNE, ENE, ESE, SSE,

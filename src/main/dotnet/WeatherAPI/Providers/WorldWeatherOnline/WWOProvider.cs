@@ -75,12 +75,12 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 		
-		public Direction WindDirection {
+		public WindDirection WindDirection {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "winddir16Point/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);
 				
-				return (Direction)Enum.Parse(typeof(Direction), val.ToString());
+				return (WindDirection)Enum.Parse(typeof(WindDirection), val.ToString());
 			}
 		}
 

@@ -59,7 +59,7 @@ namespace WeatherAPI {
 		/// <returns>
 		/// The wind direction.
 		/// </returns>
-		Direction WindDirection { get; }
+		WindDirection WindDirection { get; }
 		
 		/// <summary>
 		/// Gets the cloud cover at the time of the last update.
