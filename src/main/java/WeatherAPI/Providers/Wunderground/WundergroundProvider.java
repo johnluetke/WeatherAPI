@@ -229,6 +229,11 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 			case AirportCode:
 				xpath = String.format(WU_XPATH_HEADER, "display_location/city/text()");
 				break;
+			case ZipCode:
+			case CityState:
+			case LatitudeLongitude:
+				xpath = String.format(WU_XPATH_HEADER, "display_location/full/text()");
+				break;
 			default:
 				return getLocation();
 		}
