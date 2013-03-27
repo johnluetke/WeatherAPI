@@ -32,7 +32,7 @@ import java.util.EnumSet;
  */
 public class WundergroundProvider extends WeatherProvider implements IWeather {
 
-	private static final String WU_API_URL = "http://api.wunderground.com/api/%s/conditions/settings/q/%s.xml";
+	private static final String WU_API_URL = "http://api.wunderground.com/api/%s/conditions/q/%s.xml";
 	private static final String WU_XPATH_HEADER = "/response/current_observation/%s";
 
 	private XMLReader _reader;
@@ -57,30 +57,47 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		URL url;
 		HttpURLConnection conn = null;
 		InputStream stream = null;
+		String location = getLocation();
 
-		try {
-			url = new URL(String.format(WU_API_URL, _wu_api_key, getLocation()));
-			conn = (HttpURLConnection)url.openConnection();
-			stream = conn.getInputStream();
-			StringBuilder sb = new StringBuilder();
-			int data = stream.read();
+		do {
+			try {
+				url = new URL(String.format(WU_API_URL, _wu_api_key, location));
+				conn = (HttpURLConnection)url.openConnection();
+				stream = conn.getInputStream();
+				StringBuilder sb = new StringBuilder();
+				int data = stream.read();
 
-			while (data != -1) {
-				sb.append((char)data);
-				data = stream.read();
+				while (data != -1) {
+					sb.append((char)data);
+					data = stream.read();
+				}
+
+				_reader.load(sb.toString());
+
+				// Make sure results aren't ambiguous
+				String xpath = WU_XPATH_HEADER.substring(0, WU_XPATH_HEADER.length()-3);
+				Object val = _reader.read(xpath);
+
+				if (val == null || val.equals("")) {
+					xpath = String.format("/response/results/result[1]/zmw");
+					val = _reader.read(xpath);
+					location = String.format("zmw:%s", val);
+				}
+				else {	
+					_lastUpdate = System.currentTimeMillis();
+					break;
+				}
 			}
-
-			_reader.load(sb.toString());
-			_lastUpdate = System.currentTimeMillis();
+			catch (Exception e) {
+				e.printStackTrace(System.err);
+			}
+			finally {
+				try { if (stream != null) stream.close(); }
+				catch (IOException e) { e.printStackTrace(System.err); }
+				finally { if (conn != null ) conn.disconnect(); }
+			}
 		}
-		catch (Exception e) {
-			e.printStackTrace(System.err);
-		}
-		finally {
-			try { if (stream != null) stream.close(); }
-			catch (IOException e) { e.printStackTrace(System.err); }
-			finally { if (conn != null ) conn.disconnect(); }
-		}
+		while (true);
 	}
 
 	@Override
@@ -124,7 +141,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WU_XPATH_HEADER, "wind_dir/text()");
 		Object val = _reader.read(xpath);
-
+		
 		return Direction.getValue(val.toString());
 	}
 
@@ -169,7 +186,12 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		String val = _reader.read(xpath);
 		val = "." + val.substring(0, val.length() - 1);
 
-		return Double.parseDouble(val);
+		try {
+			return Double.parseDouble(val);
+		}
+		catch (Exception e) {
+			return 0.0;
+		}
 	}
 
 	public EnumSet<WeatherCondition> getConditions() {
@@ -179,7 +201,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		EnumSet<WeatherCondition> conditions = EnumSet.noneOf(WeatherCondition.class);
 	
 		// Special conditions
-		if (val.equals("Scattered Clouds"))
+		if (val.equals("Scattered Clouds") || val.equals("Partly Cloudy"))
 			return EnumSet.of(WeatherCondition.PartlyCloudy);
 		else if (val.equals("Mostly Cloudy"))
 			return EnumSet.of(WeatherCondition.Cloudy);
