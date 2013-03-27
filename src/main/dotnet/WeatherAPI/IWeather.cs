@@ -13,6 +13,7 @@
 //	limitations under the License.
 
 using System;
+using WeatherAPI.Providers;
 
 namespace WeatherAPI {
 	
@@ -20,7 +21,31 @@ namespace WeatherAPI {
 	/// Interface for obtaining weather information from an abstracted service
 	/// </summary>
 	public interface IWeather {
-		
+
+		/// <summary>
+		/// Gets the type of the location.
+		/// </summary>
+		/// <returns>
+		/// The type of the location.
+		/// </returns>
+		LocationType Type { get; }
+
+		/// <summary>
+		/// Gets the location.
+		/// </summary>
+		/// <returns>
+		/// The location.
+		/// </returns>
+		String Location { get; }
+
+		/// <summary>
+		/// Gets the name of the location.
+		/// </summary>
+		/// <returns>
+		/// The name of the location.
+		/// </returns>
+		String LocationName { get; }
+
 		/// <summary>
 		/// Gets the degrees in Celcius at the time of the last update.
 		/// </summary>

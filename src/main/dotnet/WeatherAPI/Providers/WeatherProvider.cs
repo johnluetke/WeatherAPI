@@ -77,7 +77,7 @@ namespace WeatherAPI.Providers {
 		/// <value>
 		/// The source.
 		/// </value>
-		public LocationType Source {
+		public LocationType Type {
 			get { return _source; }
 			set { _source = value; }
 		}

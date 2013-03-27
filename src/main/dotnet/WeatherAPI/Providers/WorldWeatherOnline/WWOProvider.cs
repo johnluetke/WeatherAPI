@@ -123,7 +123,25 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 				return currentCondition;
 			}
 		}
+
+		public new String Location {
+			get {
+				return base.Location;
+			}
+		}
 		
+		public String LocationName {
+			get {
+				return Location;
+			}
+		}
+		
+		public new LocationType Type {
+			get {
+				return base.Type;
+			}
+		}
+
 		protected WeatherCondition translateConditions(WWOWeatherCode code) {
 			switch (code) {
 				case WWOWeatherCode.Blizzard:

@@ -140,7 +140,7 @@ namespace WeatherAPI {
 			foreach (WeatherProvider provider in _providers) {
 				if (provider.Supports(sourceType)) {
 					provider.Location = source;
-					provider.Source = sourceType;
+					provider.Type = sourceType;
 					provider.Update();
 					return (IWeather)provider;
 				}
