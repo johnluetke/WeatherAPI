@@ -127,7 +127,7 @@ public class WeatherTest {
 		System.out.println(String.format("Wind (MPH):         %s", w.getWindSpeedMPH()));
 		System.out.println(String.format("Wind (KPH):         %s", w.getWindSpeedKPH()));
 		System.out.println(String.format("Wind Direction:     %s", w.getWindDirection()));
-		System.out.println(String.format("Percipitation (mm): %s", w.getPercipitation()));
+		System.out.println(String.format("Percipitation (mm): %s", w.getPrecipitation()));
 		System.out.println(String.format("Clouds:             %s", w.getCloudCover()));
 		System.out.println(String.format("Humidity:           %s", w.getHumidity()));
 		System.out.println(String.format("Conditions:         %s", w.getConditions()));

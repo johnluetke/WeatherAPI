@@ -103,7 +103,7 @@ namespace WeatherAPI {
 		/// <returns>
 		/// The percipitation in millimeters
 		/// </returns>
-		double Percipitation { get; }
+		double Precipitation { get; }
 		
 		/// <summary>
 		/// Gets the humidity at the time of the last update.

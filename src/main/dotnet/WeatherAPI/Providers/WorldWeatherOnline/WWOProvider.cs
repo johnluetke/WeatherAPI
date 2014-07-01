@@ -93,7 +93,7 @@ namespace WeatherAPI.Providers.WorldWeatherOnline {
 			}
 		}
 		
-		public double Percipitation {
+		public double Precipitation {
 			get {
 				string xpath = String.Format(WWO_XPATH_HEADER, "precipMM/text()");
 				object val = _xpath.CreateNavigator().SelectSingleNode(xpath);

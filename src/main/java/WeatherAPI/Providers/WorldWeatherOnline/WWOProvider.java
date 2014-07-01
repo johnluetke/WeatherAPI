@@ -115,7 +115,7 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 		return Double.parseDouble(val.toString());
 	}
 
-	public double getPercipitation() {
+	public double getPrecipitation() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WWO_XPATH_HEADER, "precipMM/text()");
 		Object val = _reader.read(xpath);

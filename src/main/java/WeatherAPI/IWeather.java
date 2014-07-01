@@ -87,11 +87,11 @@ public interface IWeather {
 	double getCloudCover();
 	
 	/**
-	 * Gets the percipitation in millimeters at the time of the last update.
+	 * Gets the precipitation in millimeters at the time of the last update.
 	 * 
-	 * @return The percipitation in millimeters
+	 * @return The precipitation in millimeters
 	 */
-	double getPercipitation();
+	double getPrecipitation();
 	
 	/**
 	 * Gets the humidity at the time of the last update.

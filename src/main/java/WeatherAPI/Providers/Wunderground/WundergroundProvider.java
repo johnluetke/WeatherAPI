@@ -172,7 +172,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 			return 0;
 	}
 
-	public double getPercipitation() {
+	public double getPrecipitation() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WU_XPATH_HEADER, "precip_today_metric/text()");
 		Object val = _reader.read(xpath);
