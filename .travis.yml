@@ -11,5 +11,6 @@ env:
         - secure: "B5Krfkpyp+kosC8sG9f493ZBqdxqmgmWj7roUePqlpm6NNImPQMlUwGIJQiaGs02wlgkTJFus3IqT4mcFA7/Ag61JWbsOYjMHNQkGBv309McoNruhS1n3GhcEI644WIAqSt83Eh67RGAjJqy9UX+sAPt3LF3weRguspD9sM4PPE="
 
 before_install: "git clone -b travis-ci `git config --get remote.origin.url` target/travis-ci"
+install: "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V"
 script: "mvn deploy --settings target/travis/settings.xml -Dgpg.skip=true"
 
