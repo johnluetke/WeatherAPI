@@ -33,9 +33,7 @@ public class WeatherTest {
 			"JFK",
 			"LHR",
 			"HND",
-			"CDG",
-			"HKG",
-			"MAD"
+			"CDG"
 		};
 		
 		for (int i = 0; i < airports.length; i++) {
@@ -48,6 +46,12 @@ public class WeatherTest {
 				}
 			}
 			printWeather(WeatherAPI.getWeather(airports[i]));
+		}
+                
+		try {
+			Thread.sleep(60 * 1000);
+		}
+		catch (Exception e) {
 		}
 	}
 	
@@ -94,12 +98,18 @@ public class WeatherTest {
 			}
 			printWeather(WeatherAPI.getWeather(zipCodes[i]));
 		}
+                
+		try {
+			Thread.sleep(60 * 1000);
+		}
+		catch (Exception e) {
+		}
 	}
 	
 	private void printWeather(IWeather w) {
 		System.out.println(String.format("--- %s ---", w.getLocationName()));
-		System.out.println(String.format("Degrees C:          %s", w.getDegreesCelcius()));
-		System.out.println(String.format("Degrees F:          %s", w.getDegressFahrienhiet()));
+		System.out.println(String.format("Degrees C:          %s", w.getDegreesCelsius()));
+		System.out.println(String.format("Degrees F:          %s", w.getDegressFahrenheit()));
 		System.out.println(String.format("Wind (MPH):         %s", w.getWindSpeedMPH()));
 		System.out.println(String.format("Wind (KPH):         %s", w.getWindSpeedKPH()));
 		System.out.println(String.format("Wind Direction:     %s", w.getWindDirection()));
