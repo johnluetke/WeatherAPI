@@ -39,7 +39,7 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 		InputStream stream = null;
 
 		try {
-			url = new URL(String.format(WWO_API_URL, getLocation(), WWO_API_FORMAT, _wwo_api_key));
+			url = new URL(String.format(WWO_API_URL, getUrlEncodedLocation(), WWO_API_FORMAT, _wwo_api_key));
 			conn = (HttpURLConnection)url.openConnection();
 			stream = conn.getInputStream();
 			StringBuilder sb = new StringBuilder();

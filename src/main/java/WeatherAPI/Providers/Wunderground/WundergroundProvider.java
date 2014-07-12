@@ -57,7 +57,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		URL url;
 		HttpURLConnection conn = null;
 		InputStream stream = null;
-		String location = getLocation();
+		String location = getUrlEncodedLocation();
 
 		do {
 			try {

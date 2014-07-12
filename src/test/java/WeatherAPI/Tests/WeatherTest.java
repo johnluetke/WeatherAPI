@@ -93,6 +93,28 @@ public class WeatherTest {
 		catch (Exception e) {
 		}
 	}
+        
+        @Test
+        public void testCityState() {
+		String[][] cities = new String[][] {
+			new String[] {"San Francisco", "CA"},
+			new String[] {"Los Angeles", "CA"},
+			new String[] {"New York City", "NY"}
+		};
+		
+		for (int i = 0; i < cities.length; i++) {
+			if (i != 0 && i % 10 == 0) {
+				try {
+                                        System.out.println("Sleeping to avoid rate-limiting...");
+					Thread.sleep(60 * 1000);
+				}
+				catch (Exception e) {
+					
+				}
+			}
+			printWeather(WeatherAPI.getWeather(cities[i][0], cities[i][1]));
+		}
+        }
 	
 	private void printWeather(IWeather w) {
 		System.out.println(String.format("--- %s ---", w.getLocationName()));

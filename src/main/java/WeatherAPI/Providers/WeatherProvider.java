@@ -15,6 +15,7 @@
 package WeatherAPI.Providers;
 
 import WeatherAPI.IWeather;
+import com.google.common.net.UrlEscapers;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -42,6 +43,7 @@ public abstract class WeatherProvider implements IWeather  {
 	private static long _refreshInterval = 1800000; // Default value of 30 mins
 	
 	protected String _location;
+        protected String _urlLocation;
 	protected LocationType _source;
 	protected long _lastUpdate = 0;
 	
@@ -117,7 +119,7 @@ public abstract class WeatherProvider implements IWeather  {
 	 *
 	 * @param location 
 	 */
-	public void setLocation(String location) { 
+	public void setLocation(String location) {
 		_location = location;
 	}
 
@@ -135,6 +137,15 @@ public abstract class WeatherProvider implements IWeather  {
 		_source = source;
 	}
 
+	/**
+	 * Gets the location encoded for a Url
+	 * 
+	 * @return URL-safe location
+	 */
+	public String getUrlEncodedLocation() {
+		return UrlEscapers.urlFragmentEscaper().escape(getLocation());
+	}
+	
 	/** 
 	 * Internal class for reading XML
 	 */
