@@ -12,5 +12,5 @@ env:
 
 before_install: "git clone -b travis-ci `git config --get remote.origin.url` target/travis-ci"
 install: "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V"
-script: "mvn deploy --settings target/travis/settings.xml -Dgpg.skip=true"
+script: "mvn deploy --settings target/travis-ci/settings.xml -Dgpg.skip=true"
 
