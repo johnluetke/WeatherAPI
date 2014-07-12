@@ -33,7 +33,7 @@ public class WeatherAPI {
 	 * @param city City name for which weather information should be retrieved
 	 * @param state State name for which weather information should be retrieved
 	 *
-	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * @return A class adhering to IWeather which will contain weather data for 
 	 * the requested location 
 	 */	
 	public static IWeather getWeather(String city, String state) {
@@ -45,7 +45,7 @@ public class WeatherAPI {
 	 *
 	 * @param airportCode The Airport code for which weather information should be retrieved.
 	 *
-	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * @return A class adhering to IWeather which will contain weather data for 
 	 * the requested location 
 	 */	
 	public static IWeather getWeather(String airportCode) {
@@ -57,7 +57,7 @@ public class WeatherAPI {
 	 *
 	 * @param zipCode The ZIP code for which weather information should be retrieved.
 	 *
-	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * @return A class adhering to IWeather which will contain weather data for 
 	 * the requested location 
 	 */			
 	public static IWeather getWeather(int zipCode) {
@@ -70,14 +70,14 @@ public class WeatherAPI {
 	 * @param latitude The latitude coordinate for which weather information should be
 	 * @param longitude The longitude coordinate for which weather information should be retrieved.
 	 *
-	 * @return A class adhereing to IWeather which will contain weather data for 
+	 * @return A class adhering to IWeather which will contain weather data for 
 	 * the requested location 
 	 */		
 	public static IWeather getWeather(double latitude, double longitude) {
 		return WeatherAPI.getInstance(LocationType.LatitudeLongitude, String.format("%s,%s", latitude, longitude));
 	}
 
-	private List<WeatherProvider> _providers;
+	private final List<WeatherProvider> _providers;
 
 	/**
 	 * Initializes a new instance of the WeatherAPI class. All providers
@@ -128,5 +128,3 @@ public class WeatherAPI {
 		throw new IllegalArgumentException(String.format("No available provider supports a %s source: %s", sourceType, source));
 	}
 }
-
-
