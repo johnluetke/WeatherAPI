@@ -1,16 +1,16 @@
 language: java
 jdk:
-    - openjdk7
-    - oraclejdk7
+- openjdk7
+- oraclejdk7
 branches:
-    except:
-        - travis-ci
+  except:
+  - travis-ci
 env:
-    global:
-        - secure: "neHMgZqxfBLzOUN23qOUsvwpwAF8/xgcVugAuF5IOn+cXYmejqRIClA94TvxzdF+ySv6P49nhegQ+xP2RFuIgFl4icSqdP4y7KzafLC+bcmt8mZzkrNW+af9eXPX+2tljGVAZ2huc5SG3C1XhJv2YzFdAL3YsaemfQ6eeG7h7t4="
-        - secure: "B5Krfkpyp+kosC8sG9f493ZBqdxqmgmWj7roUePqlpm6NNImPQMlUwGIJQiaGs02wlgkTJFus3IqT4mcFA7/Ag61JWbsOYjMHNQkGBv309McoNruhS1n3GhcEI644WIAqSt83Eh67RGAjJqy9UX+sAPt3LF3weRguspD9sM4PPE="
-
-before_install: "git clone -b travis-ci `git config --get remote.origin.url` target/travis-ci"
-install: "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V"
-script: "mvn deploy --settings target/travis-ci/settings.xml -Dgpg.skip=true"
-
+  global:
+  - secure: neHMgZqxfBLzOUN23qOUsvwpwAF8/xgcVugAuF5IOn+cXYmejqRIClA94TvxzdF+ySv6P49nhegQ+xP2RFuIgFl4icSqdP4y7KzafLC+bcmt8mZzkrNW+af9eXPX+2tljGVAZ2huc5SG3C1XhJv2YzFdAL3YsaemfQ6eeG7h7t4=
+  - secure: B5Krfkpyp+kosC8sG9f493ZBqdxqmgmWj7roUePqlpm6NNImPQMlUwGIJQiaGs02wlgkTJFus3IqT4mcFA7/Ag61JWbsOYjMHNQkGBv309McoNruhS1n3GhcEI644WIAqSt83Eh67RGAjJqy9UX+sAPt3LF3weRguspD9sM4PPE=
+  - secure: Y6NwSHB9UupOvN8QHjixXLzOhwVwl71n4vfSdRjyc0ZJsapDwJHBf+RuXz9uDhPe+5b4fX8ilLBCKC5ibdrgRKoO89PbtDhVkH592RfptPlXpi/t7HUqgosZyuPO7D0U91svvWBFB1y2y6UfhN0Ig97OLqQy5FRUErMkYjgHY4A=
+before_install: git clone -b travis-ci `git config --get remote.origin.url` target/travis-ci
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B
+  -V
+script: mvn deploy --settings target/travis-ci/settings.xml -Dgpg.skip=true
