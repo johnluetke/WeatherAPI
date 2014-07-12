@@ -19,6 +19,7 @@ import com.google.common.net.UrlEscapers;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.Map;
 import java.util.Properties;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -56,6 +57,11 @@ public abstract class WeatherProvider implements IWeather  {
 			if (stream != null) {
 				PROPERTIES.load(stream);
 				_refreshInterval = Long.parseLong(PROPERTIES.getProperty("REFRESH_RATE"));
+			}
+			
+			Map<String, String> environmentVars = System.getenv();
+			for (String var : environmentVars.keySet()) {
+				PROPERTIES.put(var, environmentVars.get(var));
 			}
 		}
 		catch (Exception e) {
