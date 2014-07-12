@@ -27,8 +27,8 @@
 		<url>https://github.com/johnluetke/WeatherAPI.git</url>
 		<connection>scm:git:git@github.com:johnluetke/WeatherAPI.git</connection>
 		<developerConnection>scm:git:git@github.com:johnluetke/WeatherAPI.git</developerConnection>
-	  <tag>WeatherAPI-0.9</tag>
-  </scm>
+		<tag>WeatherAPI-0.9</tag>
+	</scm>
 
 	<licenses>
 		<license>
@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
-			<version>0.9.8</version>
+			<version>0.9.9-RC2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
