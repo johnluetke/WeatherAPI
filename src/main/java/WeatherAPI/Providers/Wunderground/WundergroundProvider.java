@@ -105,7 +105,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		return true;
 	}
 
-	public double getDegreesCelcius() {
+	public double getDegreesCelsius() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WU_XPATH_HEADER, "temp_c/text()");
 		Object val = _reader.read(xpath);
@@ -113,7 +113,7 @@ public class WundergroundProvider extends WeatherProvider implements IWeather {
 		return Double.parseDouble(val.toString());
 	}
 
-	public double getDegressFahrienhiet() {
+	public double getDegressFahrenheit() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WU_XPATH_HEADER, "temp_f/text()");
 		Object val = _reader.read(xpath);

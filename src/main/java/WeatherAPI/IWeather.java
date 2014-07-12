@@ -48,14 +48,14 @@ public interface IWeather {
 	 * 
 	 * @return The degrees in Celcius.
 	 */
-	double getDegreesCelcius();
+	double getDegreesCelsius();
 
 	/**
 	 * Gets the degress in Fahrienhiet at the time of the last update.
 	 * 
 	 * @return The degress in Fahrienhiet.
 	 */
-	double getDegressFahrienhiet();
+	double getDegressFahrenheit();
 	
 	/**
 	 * Gets the wind speed in miles per hour at the time of the last update.

@@ -67,7 +67,7 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 		return true;
 	}
 
-	public double getDegreesCelcius() {
+	public double getDegreesCelsius() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WWO_XPATH_HEADER, "temp_C/text()");
 		Object val = _reader.read(xpath);
@@ -75,7 +75,7 @@ public class WWOProvider extends WeatherProvider implements IWeather {
 		return Double.parseDouble(val.toString());
 	}
 
-	public double getDegressFahrienhiet() {
+	public double getDegressFahrenheit() {
 		if (!isFresh()) { Update(); }
 		String xpath = String.format(WWO_XPATH_HEADER, "temp_F/text()");
 		Object val = _reader.read(xpath);
