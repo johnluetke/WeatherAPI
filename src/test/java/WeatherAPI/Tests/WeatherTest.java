@@ -42,8 +42,7 @@ public class WeatherTest {
                                         System.out.println("Sleeping to avoid rate-limiting...");
 					Thread.sleep(60 * 1000);
 				}
-				catch (Exception e) {
-					
+				catch (Exception e) {	
 				}
 			}
 			printWeather(WeatherAPI.getWeather(airports[i]));
@@ -80,7 +79,6 @@ public class WeatherTest {
 					Thread.sleep(60 * 1000);
 				}
 				catch (Exception e) {
-					
 				}
 			}
 			printWeather(WeatherAPI.getWeather(zipCodes[i]));
@@ -108,11 +106,17 @@ public class WeatherTest {
                                         System.out.println("Sleeping to avoid rate-limiting...");
 					Thread.sleep(60 * 1000);
 				}
-				catch (Exception e) {
-					
+				catch (Exception e) {	
 				}
 			}
 			printWeather(WeatherAPI.getWeather(cities[i][0], cities[i][1]));
+		}
+		
+		try {
+			System.out.println("Sleeping to avoid rate-limiting...");
+			Thread.sleep(60 * 1000);
+		}
+		catch (Exception e) {
 		}
         }
 	
@@ -130,4 +134,3 @@ public class WeatherTest {
 		System.out.println();
 	}
 }
-
