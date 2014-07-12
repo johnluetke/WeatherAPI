@@ -12,3 +12,4 @@ env:
 
 before_install: "git clone -b travis-ci `git config --get remote.origin.url` target/travis-ci"
 script: "mvn deploy --settings target/travis/settings.xml -Dgpg.skip=true"
+
