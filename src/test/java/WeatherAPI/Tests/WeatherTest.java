@@ -39,6 +39,7 @@ public class WeatherTest {
 		for (int i = 0; i < airports.length; i++) {
 			if (i != 0 && i % 10 == 0) {
 				try {
+                                        System.out.println("Sleeping to avoid rate-limiting...");
 					Thread.sleep(60 * 1000);
 				}
 				catch (Exception e) {
@@ -49,6 +50,7 @@ public class WeatherTest {
 		}
                 
 		try {
+                        System.out.println("Sleeping to avoid rate-limiting...");
 			Thread.sleep(60 * 1000);
 		}
 		catch (Exception e) {
@@ -60,36 +62,21 @@ public class WeatherTest {
 		
 		int[] zipCodes = new int[] {
 			2045,
-			8528,
 			12941,
-			17344,
-			20078,
 			27323,
-			28480,
-			30645,
 			36033,
 			41554,
-			48105,
-			50328,
-			55345,
 			55718,
-			56552,
-			59114,
-			61025,
 			69022,
 			71066,
-			73491,
-			79783,
 			88042,
-			91012,
-			92173,
-			94284,
 			97436,
 		};
 		
 		for (int i = 0; i < zipCodes.length; i++) {
-			if (i != 0 && i % 9 == 0) {
+			if (i != 0 && i % 10 == 0) {
 				try {
+                                        System.out.println("Sleeping to avoid rate-limiting...");
 					Thread.sleep(60 * 1000);
 				}
 				catch (Exception e) {
@@ -100,6 +87,7 @@ public class WeatherTest {
 		}
                 
 		try {
+                        System.out.println("Sleeping to avoid rate-limiting...");
 			Thread.sleep(60 * 1000);
 		}
 		catch (Exception e) {
